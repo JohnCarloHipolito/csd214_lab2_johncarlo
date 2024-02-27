@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.triosstudent.csd214_lab2_johncarlo.TodoController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <Label text="MY TODO LIST" style="-fx-font-weight: bold; -fx-font-size: 20"/>
+    <Pane prefHeight="20.0"/>
+
+    <HBox alignment="CENTER" spacing="10.0">
+        <Label prefWidth="50" text="Id" style="-fx-font-weight: bold"/>
+        <Label prefWidth="250" text="Description" style="-fx-font-weight: bold"/>
+        <Label prefWidth="120" text="Target Date" style="-fx-font-weight: bold"/>
+        <Label prefWidth="100" text="Status" style="-fx-font-weight: bold"/>
+    </HBox>
+
+    <HBox alignment="CENTER" spacing="10.0">
+        <TextField fx:id="idTF" prefWidth="50"/>
+        <TextField fx:id="descriptionTF" prefWidth="250"/>
+        <DatePicker fx:id="targetDateDP" editable="false" prefWidth="120"/>
+        <ChoiceBox fx:id="statusCB" prefWidth="100">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Todo"/>
+                    <String fx:value="Doing"/>
+                    <String fx:value="Done"/>
+                </FXCollections>
+            </items>
+        </ChoiceBox>
+    </HBox>
+    <Pane prefHeight="10.0"/>
+
+    <HBox alignment="CENTER" spacing="10.0">
+        <Button fx:id="readBtn" minWidth="100" onAction="#executeQuery" text="Read Todo" HBox.hgrow="ALWAYS"/>
+        <Button fx:id="createBtn" minWidth="100" onAction="#executeQuery" text="Create Todo" HBox.hgrow="ALWAYS"/>
+        <Button fx:id="updateBtn" minWidth="100" onAction="#executeQuery" text="Update Todo" HBox.hgrow="ALWAYS"/>
+        <Button fx:id="deleteBtn" minWidth="100" onAction="#executeQuery" text="Delete Todo" HBox.hgrow="ALWAYS"/>
+    </HBox>
+    <Pane prefHeight="20.0"/>
+
+    <TableView fx:id="todoTbl" prefHeight="200">
+        <columns>
+            <TableColumn fx:id="idCol" prefWidth="60" text="Id"/>
+            <TableColumn fx:id="descriptionCol" prefWidth="260" text="Description"/>
+            <TableColumn fx:id="targetDateCol" prefWidth="130" text="Target Date"/>
+            <TableColumn fx:id="statusCol" prefWidth="100" text="Status"/>
+        </columns>
+    </TableView>
+
+    <HBox>
+        <Label text="Message: " style="-fx-font-weight: bold"/>
+        <Label fx:id="messageLbl"/>
+    </HBox>
+</VBox>
